@@ -1,12 +1,11 @@
 const router = require('express').Router();
-const { saveNote } = require('../../lib/notes');
+const { saveNote, deleteNote } = require('../../lib/notes');
 let notes = require('../../db/db.json');
-const { route } = require('../htmlRoutes');
+
 
 // API route
 router.get('/notes', (req, res) => {
     res.json(notes);
-
 });
 router.post('/notes', (req, res) => {
     // save note
@@ -16,7 +15,7 @@ router.post('/notes', (req, res) => {
 });
 
 router.delete('/notes/:id', (req, res) => {
-    notes= delteNotes(req.params.id);
+    notes = deleteNote(req.params.id);
     res.json(notes);
 });
 
